@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AICTE IDEA Lab Club | Poornima Group</title>
+<meta name="description" content="AICTE IDEA Lab Club at Poornima Group — a research and prototyping facility for student innovation, hardware design, and applied engineering.">
+
+<!-- Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+<!-- Font Awesome (icons) -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- Scroll progress indicator -->
+<div class="scroll-progress" id="scrollProgress"></div>
+
+<!-- Custom cursor glow (desktop only, purely decorative) -->
+<div class="cursor-glow" id="cursorGlow" aria-hidden="true"></div>
+
+<!-- ================= NAVBAR ================= -->
+<header class="navbar" id="navbar">
+  <div class="navbar__inner">
+    <a href="#home" class="navbar__logo" aria-label="AICTE IDEA Lab Club — Home">
+      <span class="navbar__logo-mark">
+        <svg width="34" height="34" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M17 2L30.5 9.5V24.5L17 32L3.5 24.5V9.5L17 2Z" stroke="url(#logoGrad)" stroke-width="1.6"/>
+          <path d="M17 9L23.5 12.7V20.3L17 24L10.5 20.3V12.7L17 9Z" fill="url(#logoGrad)" fill-opacity="0.18" stroke="url(#logoGrad)" stroke-width="1.4"/>
+          <circle cx="17" cy="17" r="2.6" fill="url(#logoGrad)"/>
+          <defs>
+            <linearGradient id="logoGrad" x1="3.5" y1="2" x2="30.5" y2="32" gradientUnits="userSpaceOnUse">
+              <stop stop-color="#E6C767"/>
+              <stop offset="1" stop-color="#B8860B"/>
+            </linearGradient>
+          </defs>
+        </svg>
+      </span>
+      <span class="navbar__logo-text">
+        <strong>IDEA&nbsp;Lab</strong>
+        <small>Poornima Group · AICTE</small>
+      </span>
+    </a>
+
+    <nav class="navbar__nav" id="navMenu">
+      <a href="#home" class="nav-link active-link">Home</a>
+      <a href="#about" class="nav-link">About</a>
+      <a href="#facilities" class="nav-link">Facilities</a>
+      <a href="#gallery" class="nav-link">Gallery</a>
+      <a href="#contact" class="nav-link">Contact</a>
+    </nav>
+
+    <div class="navbar__actions">
+      <a href="https://forms.google.com/your-form" target="_blank" rel="noopener" class="btn btn--gold btn--sm navbar__cta">
+        Register Project
+      </a>
+      <button class="navbar__burger" id="burgerBtn" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#home" class="mobile-menu__link">Home</a>
+    <a href="#about" class="mobile-menu__link">About</a>
+    <a href="#features" class="mobile-menu__link">Features</a>
+    <a href="#facilities" class="mobile-menu__link">Facilities</a>
+    <a href="#gallery" class="mobile-menu__link">Gallery</a>
+    <a href="#contact" class="mobile-menu__link">Contact</a>
+    <a href="https://forms.google.com/your-form" target="_blank" rel="noopener" class="btn btn--gold mobile-menu__cta">Register Project</a>
+  </div>
+</header>
+
+<!-- ================= HERO ================= -->
+<section class="hero" id="home">
+  <div class="hero__bg">
+    <!-- Replace with a real lab/hardware photo or video (e.g. Unsplash: photographer credit) -->
+    <img src="https://images.unsplash.com/photo-1581091870627-3c9a4b1e0c1f?auto=format&fit=crop&w=1920&q=80"
+         alt="" class="hero__bg-img" id="heroImg" loading="eager"
+         onerror="this.src='https://picsum.photos/seed/ideahero/1920/1080'">
+    <div class="hero__overlay"></div>
+    <div class="hero__grid"></div>
+    <canvas id="particleCanvas" class="hero__particles"></canvas>
+    <div class="blob blob--one"></div>
+    <div class="blob blob--two"></div>
+  </div>
+
+  <div class="hero__content">
+    <p class="eyebrow" data-reveal>AICTE IDEA LAB · POORNIMA GROUP OF INSTITUTIONS</p>
+    <h1 class="hero__title" data-reveal>
+      Transforming <span class="text-gold">Ideas</span><br> into Innovation
+    </h1>
+    <p class="hero__subtitle" data-reveal>
+      A dedicated Innovation, Design &amp; Entrepreneurship Application development lab
+      where student researchers prototype, test and build real engineering solutions —
+      backed by industry-grade tools, mentorship and a culture of applied invention.
+    </p>
+    <div class="hero__actions" data-reveal>
+      <a href="#facilities" class="btn btn--outline">Explore Lab</a>
+      <a href="https://forms.google.com/your-form" target="_blank" rel="noopener" class="btn btn--gold">
+        Register Project <i class="fa-solid fa-arrow-up-right"></i>
+      </a>
+    </div>
+
+    <div class="hero__meta" data-reveal>
+      <div class="hero__meta-item"><span>12+</span>Advanced Machines</div>
+      <div class="hero__meta-divider"></div>
+      <div class="hero__meta-item"><span>150+</span>Student Innovators</div>
+      <div class="hero__meta-divider"></div>
+      <div class="hero__meta-item"><span>AICTE</span>Recognized Facility</div>
+    </div>
+  </div>
+
+  <button class="scroll-indicator" id="scrollIndicator" aria-label="Scroll to About section">
+    <span>Scroll</span>
+    <div class="scroll-indicator__line"><div class="scroll-indicator__dot"></div></div>
+  </button>
+</section>
+
+<!-- ================= ABOUT ================= -->
+<section class="about" id="about">
+  <div class="section-inner">
+    <div class="about__grid">
+      <div class="about__media" data-reveal>
+        <div class="about__media-frame">
+          <!-- Replace with real photo of the IDEA Lab interior -->
+          <img src="https://picsum.photos/seed/labinterior/900/1100" alt="Inside the AICTE IDEA Lab workshop floor" loading="lazy">
+        </div>
+        <div class="about__media-card glass">
+          <i class="fa-solid fa-award"></i>
+          <div>
+            <strong>AICTE Recognized</strong>
+            <span>Idea, Design &amp; Entrepreneurship Application Lab</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="about__copy">
+        <p class="eyebrow" data-reveal>ABOUT THE LAB</p>
+        <h2 class="section-title" data-reveal>What is the AICTE IDEA Lab?</h2>
+        <p class="section-lead" data-reveal>
+          The IDEA Lab (Idea, Design &amp; Entrepreneurship Application) is a hands-on
+          innovation facility established under the AICTE framework at Poornima Group.
+          It gives students direct access to fabrication tools, electronics benches and
+          rapid-prototyping equipment — turning classroom concepts into working prototypes.
+        </p>
+
+        <div class="about__cards">
+          <div class="about-card glass" data-reveal>
+            <div class="about-card__icon"><i class="fa-solid fa-eye"></i></div>
+            <h3>Vision</h3>
+            <p>To build a self-sustaining culture of innovation where every student can
+              design, build and test real engineering ideas without barriers.</p>
+          </div>
+          <div class="about-card glass" data-reveal>
+            <div class="about-card__icon"><i class="fa-solid fa-bullseye"></i></div>
+            <h3>Mission</h3>
+            <p>To equip students with tools, mentorship and industry exposure that convert
+              raw ideas into deployable products and patent-worthy prototypes.</p>
+          </div>
+          <div class="about-card glass" data-reveal>
+            <div class="about-card__icon"><i class="fa-solid fa-list-check"></i></div>
+            <h3>Objectives</h3>
+            <p>Foster interdisciplinary R&amp;D, host structured hackathons, and build a
+              bridge between academic learning and applied, industry-ready engineering.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= KEY FEATURES ================= -->
+<section class="features" id="features">
+  <div class="section-inner">
+    <p class="eyebrow center" data-reveal>WHAT WE OFFER</p>
+    <h2 class="section-title center" data-reveal>Key Features</h2>
+    <p class="section-lead center" data-reveal>
+      Everything a student innovator needs, under a single roof.
+    </p>
+
+    <div class="feature-grid">
+      <div class="feature-card" data-reveal>
+        <div class="feature-card__icon"><i class="fa-solid fa-lightbulb"></i></div>
+        <h3>Innovation</h3>
+        <p>Structured space to ideate, sketch and validate concepts before a single part is machined.</p>
+      </div>
+      <div class="feature-card" data-reveal>
+        <div class="feature-card__icon"><i class="fa-solid fa-cubes"></i></div>
+        <h3>Prototype Development</h3>
+        <p>3D printing, CNC and laser-cutting equipment to move from CAD file to physical part.</p>
+      </div>
+      <div class="feature-card" data-reveal>
+        <div class="feature-card__icon"><i class="fa-solid fa-flask"></i></div>
+        <h3>Research</h3>
+        <p>Dedicated benches for applied research across robotics, IoT, embedded systems and materials.</p>
+      </div>
+      <div class="feature-card" data-reveal>
+        <div class="feature-card__icon"><i class="fa-solid fa-people-arrows"></i></div>
+        <h3>Mentorship</h3>
+        <p>Faculty and alumni mentors guide every project from concept through to demonstration.</p>
+      </div>
+      <div class="feature-card" data-reveal>
+        <div class="feature-card__icon"><i class="fa-solid fa-handshake"></i></div>
+        <h3>Industry Collaboration</h3>
+        <p>Direct partnerships that expose students to live problem statements and real-world constraints.</p>
+      </div>
+      <div class="feature-card" data-reveal>
+        <div class="feature-card__icon"><i class="fa-solid fa-chalkboard-user"></i></div>
+        <h3>Workshops</h3>
+        <p>Recurring hands-on sessions on fabrication, embedded programming and design thinking.</p>
+      </div>
+      <div class="feature-card" data-reveal>
+        <div class="feature-card__icon"><i class="fa-solid fa-trophy"></i></div>
+        <h3>Hackathons</h3>
+        <p>Time-boxed innovation sprints that push teams from problem statement to working demo.</p>
+      </div>
+      <div class="feature-card" data-reveal>
+        <div class="feature-card__icon"><i class="fa-solid fa-gears"></i></div>
+        <h3>Advanced Equipment</h3>
+        <p>Industry-grade fabrication and testing machines maintained to professional lab standards.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FACILITIES : INFINITE CAROUSEL ================= -->
+<section class="facilities" id="facilities">
+  <div class="section-inner section-inner--wide">
+    <p class="eyebrow center" data-reveal>INSIDE THE LAB</p>
+    <h2 class="section-title center" data-reveal>Facilities &amp; Equipment</h2>
+    <p class="section-lead center" data-reveal>
+      Drag, scroll, or use the arrows — a live look at the machines powering student projects.
+    </p>
+  </div>
+
+  <div class="carousel" id="carousel">
+    <button class="carousel__arrow carousel__arrow--left" id="carouselPrev" aria-label="Previous machine">
+      <i class="fa-solid fa-chevron-left"></i>
+    </button>
+
+    <div class="carousel__viewport" id="carouselViewport" tabindex="0" role="region" aria-label="Facilities carousel, use arrow keys to navigate">
+      <div class="carousel__track" id="carouselTrack">
+        <!-- Track items injected by script.js (cloned for infinite loop) -->
+      </div>
+    </div>
+
+    <button class="carousel__arrow carousel__arrow--right" id="carouselNext" aria-label="Next machine">
+      <i class="fa-solid fa-chevron-right"></i>
+    </button>
+  </div>
+
+  <div class="carousel__hint">
+    <i class="fa-solid fa-arrows-left-right"></i> Drag or scroll to browse &nbsp;·&nbsp; Hover to pause
+  </div>
+</section>
+
+<!-- ================= INNOVATION WORKFLOW ================= -->
+<section class="workflow" id="workflow">
+  <div class="section-inner">
+    <p class="eyebrow center" data-reveal>HOW A PROJECT MOVES THROUGH THE LAB</p>
+    <h2 class="section-title center" data-reveal>Innovation Workflow</h2>
+
+    <div class="timeline">
+      <div class="timeline__line" id="timelineLine"><div class="timeline__line-fill" id="timelineFill"></div></div>
+
+      <div class="timeline__step" data-reveal>
+        <div class="timeline__marker"><i class="fa-solid fa-brain"></i></div>
+        <div class="timeline__card glass">
+          <span class="timeline__index">01</span>
+          <h3>Idea</h3>
+          <p>Students identify a real problem and frame a testable hypothesis with faculty mentors.</p>
+        </div>
+      </div>
+
+      <div class="timeline__step" data-reveal>
+        <div class="timeline__marker"><i class="fa-solid fa-pen-ruler"></i></div>
+        <div class="timeline__card glass">
+          <span class="timeline__index">02</span>
+          <h3>Design</h3>
+          <p>Concepts are modeled in CAD, reviewed for feasibility, and refined before fabrication.</p>
+        </div>
+      </div>
+
+      <div class="timeline__step" data-reveal>
+        <div class="timeline__marker"><i class="fa-solid fa-cube"></i></div>
+        <div class="timeline__card glass">
+          <span class="timeline__index">03</span>
+          <h3>Prototype</h3>
+          <p>The design is built on lab equipment — 3D printed, machined or wired into a working unit.</p>
+        </div>
+      </div>
+
+      <div class="timeline__step" data-reveal>
+        <div class="timeline__marker"><i class="fa-solid fa-vial"></i></div>
+        <div class="timeline__card glass">
+          <span class="timeline__index">04</span>
+          <h3>Testing</h3>
+          <p>Rigorous iteration against real constraints, with mentor review at every checkpoint.</p>
+        </div>
+      </div>
+
+      <div class="timeline__step" data-reveal>
+        <div class="timeline__marker"><i class="fa-solid fa-rocket"></i></div>
+        <div class="timeline__card glass">
+          <span class="timeline__index">05</span>
+          <h3>Innovation</h3>
+          <p>A validated, demonstrable solution — ready for showcase, funding, or further development.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= GALLERY ================= -->
+<section class="gallery" id="gallery">
+  <div class="section-inner">
+    <p class="eyebrow center" data-reveal>MOMENTS FROM THE LAB</p>
+    <h2 class="section-title center" data-reveal>Gallery</h2>
+    <p class="section-lead center" data-reveal>Workshops, builds, and the people behind them.</p>
+  </div>
+
+  <div class="masonry" id="masonryGrid">
+    <!-- Images populated dynamically in script.js for consistent seeded placeholders -->
+  </div>
+</section>
+
+<!-- Lightbox -->
+<div class="lightbox" id="lightbox" aria-hidden="true">
+  <button class="lightbox__close" id="lightboxClose" aria-label="Close gallery image"><i class="fa-solid fa-xmark"></i></button>
+  <button class="lightbox__nav lightbox__nav--prev" id="lightboxPrev" aria-label="Previous image"><i class="fa-solid fa-chevron-left"></i></button>
+  <img src="" alt="" class="lightbox__img" id="lightboxImg">
+  <button class="lightbox__nav lightbox__nav--next" id="lightboxNext" aria-label="Next image"><i class="fa-solid fa-chevron-right"></i></button>
+  <div class="lightbox__caption" id="lightboxCaption"></div>
+</div>
+
+<!-- ================= STATISTICS ================= -->
+<section class="stats" id="stats">
+  <div class="section-inner">
+    <div class="stats__grid">
+      <div class="stat" data-reveal>
+        <div class="stat__number"><span data-count="1500">0</span>+</div>
+        <div class="stat__label">Students Trained</div>
+      </div>
+      <div class="stat" data-reveal>
+        <div class="stat__number"><span data-count="320">0</span>+</div>
+        <div class="stat__label">Projects Built</div>
+      </div>
+      <div class="stat" data-reveal>
+        <div class="stat__number"><span data-count="12">0</span></div>
+        <div class="stat__label">Advanced Machines</div>
+      </div>
+      <div class="stat" data-reveal>
+        <div class="stat__number"><span data-count="45">0</span></div>
+        <div class="stat__label">Workshops Conducted</div>
+      </div>
+      <div class="stat" data-reveal>
+        <div class="stat__number"><span data-count="18">0</span></div>
+        <div class="stat__label">Innovation Challenges</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= WHY JOIN ================= -->
+<section class="why-join" id="why-join">
+  <div class="section-inner">
+    <p class="eyebrow center" data-reveal>THE CASE FOR JOINING</p>
+    <h2 class="section-title center" data-reveal>Why Join IDEA Lab</h2>
+
+    <div class="why-grid">
+      <div class="why-card" data-reveal>
+        <i class="fa-solid fa-toolbox"></i>
+        <h3>Hands-on Access</h3>
+        <p>Direct, unsupervised-hours access to fabrication and electronics equipment once trained.</p>
+      </div>
+      <div class="why-card" data-reveal>
+        <i class="fa-solid fa-user-graduate"></i>
+        <h3>Mentor Network</h3>
+        <p>Work alongside faculty and industry mentors who have shipped real products.</p>
+      </div>
+      <div class="why-card" data-reveal>
+        <i class="fa-solid fa-file-shield"></i>
+        <h3>IP Support</h3>
+        <p>Guidance on documentation, patent filing and protecting your original work.</p>
+      </div>
+      <div class="why-card" data-reveal>
+        <i class="fa-solid fa-money-bill-trend-up"></i>
+        <h3>Funding Pathways</h3>
+        <p>Access to AICTE and institutional grants for shortlisted student projects.</p>
+      </div>
+      <div class="why-card" data-reveal>
+        <i class="fa-solid fa-users-rectangle"></i>
+        <h3>Community</h3>
+        <p>Join a cross-branch cohort of builders, from mechanical to computer science.</p>
+      </div>
+      <div class="why-card" data-reveal>
+        <i class="fa-solid fa-id-badge"></i>
+        <h3>Recognized Certification</h3>
+        <p>Earn certificates and portfolio-ready credit for completed lab projects.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CONTACT ================= -->
+<section class="contact" id="contact">
+  <div class="section-inner">
+    <p class="eyebrow center" data-reveal>GET IN TOUCH</p>
+    <h2 class="section-title center" data-reveal>Contact the IDEA Lab</h2>
+
+    <div class="contact__grid">
+      <div class="contact-card glass" data-reveal>
+        <i class="fa-solid fa-location-dot"></i>
+        <h3>Address</h3>
+        <p>Poornima Group of Institutions,<br>ISI-2, RIICO Institutional Area,<br>Sitapura, Jaipur, Rajasthan 302022</p>
+      </div>
+      <div class="contact-card glass" data-reveal>
+        <i class="fa-solid fa-phone"></i>
+        <h3>Phone</h3>
+        <p><a href="tel:+911412770300">+91 141 277 0300</a></p>
+      </div>
+      <div class="contact-card glass" data-reveal>
+        <i class="fa-solid fa-envelope"></i>
+        <h3>Email</h3>
+        <p><a href="mailto:idealab@poornima.edu.in">idealab@poornima.edu.in</a></p>
+      </div>
+      <div class="contact-card glass" data-reveal>
+        <i class="fa-brands fa-square-instagram"></i>
+        <h3>Social</h3>
+        <div class="contact-card__social">
+          <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+          <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+          <a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+          <a href="#" aria-label="Twitter / X"><i class="fa-brands fa-x-twitter"></i></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="contact__map glass" data-reveal>
+      <!-- Replace with real Google Maps embed for Poornima Group -->
+      <iframe
+        title="Poornima Group location map"
+        src="https://www.google.com/maps?q=Poornima%20Group%20of%20Institutions%2C%20Jaipur&output=embed"
+        loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer class="footer">
+  <div class="section-inner footer__inner">
+    <div class="footer__brand">
+      <span class="navbar__logo-mark">
+        <svg width="30" height="30" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M17 2L30.5 9.5V24.5L17 32L3.5 24.5V9.5L17 2Z" stroke="url(#logoGrad2)" stroke-width="1.6"/>
+          <circle cx="17" cy="17" r="2.6" fill="url(#logoGrad2)"/>
+          <defs>
+            <linearGradient id="logoGrad2" x1="3.5" y1="2" x2="30.5" y2="32" gradientUnits="userSpaceOnUse">
+              <stop stop-color="#E6C767"/><stop offset="1" stop-color="#B8860B"/>
+            </linearGradient>
+          </defs>
+        </svg>
+      </span>
+      <p>AICTE IDEA Lab Club<br><span>Poornima Group of Institutions</span></p>
+    </div>
+
+    <div class="footer__links">
+      <h4>Quick Links</h4>
+      <a href="#about">About</a>
+      <a href="#facilities">Facilities</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#contact">Contact</a>
+    </div>
+
+    <div class="footer__links">
+      <h4>Programs</h4>
+      <a href="#features">Workshops</a>
+      <a href="#workflow">Innovation Workflow</a>
+      <a href="#why-join">Why Join</a>
+      <a href="https://forms.google.com/your-form" target="_blank" rel="noopener">Register a Project</a>
+    </div>
+
+    <div class="footer__credit">
+      <h4>Developed for</h4>
+      <p>AICTE IDEA Lab Club<br>Poornima Group</p>
+    </div>
+  </div>
+
+  <div class="footer__bottom">
+    <p>&copy; <span id="year"></span> AICTE IDEA Lab Club, Poornima Group of Institutions. All rights reserved.</p>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
