@@ -345,7 +345,29 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible{
 .feature-card p{ font-size:0.9rem; color:var(--ink-600); transition:color .45s var(--ease); }
 
 /* ---------------------------------- */
-/* 8. FACILITIES CAROUSEL             */
+/* 8. REGISTRATION PAGE              */
+/* ---------------------------------- */
+.register-page{
+  min-height:100vh;
+  padding:140px 0 80px;
+  background:linear-gradient(135deg, var(--navy-900), var(--navy-700));
+}
+.register-page__inner{ display:flex; flex-direction:column; gap:24px; }
+.register-page__back{ align-self:flex-start; color:var(--white); border-color:rgba(255,255,255,0.35); }
+.register-page__card{
+  border-radius:var(--radius-lg);
+  padding:36px;
+  box-shadow:var(--shadow-soft);
+}
+.register-page__card h1{ font-size:clamp(2rem, 3vw, 2.6rem); color:var(--navy-900); margin-bottom:10px; }
+.register-page__lead{ color:var(--ink-600); max-width:760px; margin-bottom:24px; }
+.register-page__embed{ border-radius:var(--radius-md); overflow:hidden; border:1px solid rgba(8,18,38,0.08); min-height:720px; background:var(--white); }
+.register-page__embed iframe{ width:100%; height:100%; min-height:720px; border:0; }
+.register-page__note{ margin-top:18px; color:var(--ink-600); }
+.register-page__note a{ color:var(--gold-600); font-weight:600; }
+
+/* ---------------------------------- */
+/* 9. FACILITIES CAROUSEL             */
 /* ---------------------------------- */
 .facilities{ background:var(--grad-navy); overflow:hidden; padding-bottom:70px; }
 .facilities .eyebrow{ color:var(--gold-300); }
