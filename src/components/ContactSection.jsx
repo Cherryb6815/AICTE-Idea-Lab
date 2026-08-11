@@ -22,7 +22,7 @@ function ContactSection() {
             <p><a href="mailto:idealab@poornima.edu.in">idealab@poornima.edu.in</a></p>
           </div>
           <div className="contact-card glass" data-reveal>
-            <i className="fa-brands fa-square-instagram" />
+            <i className="fa-solid fa-share-nodes" />
             <h3>Social</h3>
             <div className="contact-card__social">
               <a href="#" aria-label="Instagram"><i className="fa-brands fa-instagram" /></a>

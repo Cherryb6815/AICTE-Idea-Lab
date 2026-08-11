@@ -1,5 +1,6 @@
 export const navItems = [
   { id: 'home', label: 'Home' },
+  { id: 'live-event', label: 'Live Event' },
   { id: 'about', label: 'About' },
   { id: 'facilities', label: 'Facilities' },
   { id: 'gallery', label: 'Gallery' },

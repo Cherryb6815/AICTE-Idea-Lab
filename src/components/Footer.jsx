@@ -4,16 +4,7 @@ function Footer({ handleAnchorClick, onNavigateToRegister }) {
       <div className="section-inner footer__inner">
         <div className="footer__brand">
           <span className="navbar__logo-mark">
-            <svg width="30" height="30" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M17 2L30.5 9.5V24.5L17 32L3.5 24.5V9.5L17 2Z" stroke="url(#logoGrad2)" strokeWidth="1.6" />
-              <circle cx="17" cy="17" r="2.6" fill="url(#logoGrad2)" />
-              <defs>
-                <linearGradient id="logoGrad2" x1="3.5" y1="2" x2="30.5" y2="32" gradientUnits="userSpaceOnUse">
-                  <stop stopColor="#E6C767" />
-                  <stop offset="1" stopColor="#B8860B" />
-                </linearGradient>
-              </defs>
-            </svg>
+            <img src="/image.png" alt="AICTE IDEA Lab Logo" style={{ width: '30px', height: '30px', objectFit: 'contain' }} />
           </span>
           <p>AICTE IDEA Lab Club<br /><span>Poornima Group of Institutions</span></p>
         </div>

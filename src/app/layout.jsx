@@ -22,8 +22,11 @@ const jetbrainsMono = JetBrains_Mono({
 export const metadata = {
   title: 'AICTE IDEA Lab Club | Poornima Group',
   description: 'AICTE IDEA Lab Club at Poornima Group — a research and prototyping facility for student innovation, hardware design, and applied engineering.',
-  viewport: 'width=device-width, initial-scale=1.0',
-  charSet: 'UTF-8',
+};
+
+export const viewport = {
+  width: 'device-width',
+  initialScale: 1,
 };
 
 export default function RootLayout({ children }) {

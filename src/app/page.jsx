@@ -4,6 +4,7 @@ import { useEffect, useMemo, useRef, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Header from '../components/Header';
 import HeroSection from '../components/HeroSection';
+import LiveEventSection from '../components/LiveEventSection';
 import AboutSection from '../components/AboutSection';
 import FeaturesSection from '../components/FeaturesSection';
 import FacilitiesSection from '../components/FacilitiesSection';
@@ -254,6 +255,7 @@ export default function Home() {
 
       <Header navItems={navItems} activeSection={activeSection} isScrolled={isScrolled} menuOpen={menuOpen} setMenuOpen={setMenuOpen} handleAnchorClick={handleAnchorClick} onNavigateToRegister={goToRegister} />
       <HeroSection heroImage="https://fastly.picsum.photos/id/363/1920/1080.jpg?hmac=9RFCI5b36QX8aUP4in2LE3Y5bbodjn8Unzk02-BPPPc" handleAnchorClick={handleAnchorClick} onNavigateToRegister={goToRegister} />
+      <LiveEventSection onRegister={goToRegister} />
       <AboutSection aboutCards={aboutCards} />
       <FeaturesSection featureCards={featureCards} />
       {/* <FacilitiesSection facilities={facilities} scrollCarousel={scrollCarousel} /> */}
