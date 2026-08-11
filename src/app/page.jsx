@@ -1,23 +1,25 @@
-import { useEffect, useMemo, useRef, useState } from 'react';
-import Header from './components/Header';
-import HeroSection from './components/HeroSection';
-import AboutSection from './components/AboutSection';
-import FeaturesSection from './components/FeaturesSection';
-import FacilitiesSection from './components/FacilitiesSection';
-import WorkflowSection from './components/WorkflowSection';
-import GallerySection from './components/GallerySection';
-import StatsSection from './components/StatsSection';
-import WhyJoinSection from './components/WhyJoinSection';
-import ContactSection from './components/ContactSection';
-import Footer from './components/Footer';
-import RegisterPage from './components/RegisterPage';
-import { aboutCards, featureCards, facilities, galleryItems, heroImage, navItems, stats, workflowSteps, whyJoinCards } from './data/content';
+'use client';
 
-function App() {
+import { useEffect, useMemo, useRef, useState } from 'react';
+import { useRouter } from 'next/navigation';
+import Header from '../components/Header';
+import HeroSection from '../components/HeroSection';
+import AboutSection from '../components/AboutSection';
+import FeaturesSection from '../components/FeaturesSection';
+import FacilitiesSection from '../components/FacilitiesSection';
+import WorkflowSection from '../components/WorkflowSection';
+import GallerySection from '../components/GallerySection';
+import StatsSection from '../components/StatsSection';
+import WhyJoinSection from '../components/WhyJoinSection';
+import ContactSection from '../components/ContactSection';
+import Footer from '../components/Footer';
+import { aboutCards, featureCards, facilities, galleryItems, heroImage, navItems, stats, workflowSteps, whyJoinCards } from '../data/content';
+
+export default function Home() {
+  const router = useRouter();
   const [activeSection, setActiveSection] = useState('home');
   const [menuOpen, setMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-  const [currentView, setCurrentView] = useState('home');
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [currentImage, setCurrentImage] = useState(0);
   const carouselTrackRef = useRef(null);
@@ -25,9 +27,11 @@ function App() {
   const heroImg = useMemo(() => heroImage, []);
 
   useEffect(() => {
+    // 1. Footer Year
     const yearEl = document.getElementById('year');
     if (yearEl) yearEl.textContent = new Date().getFullYear();
 
+    // 2. Scroll Progress Bar
     const scrollProgress = document.getElementById('scrollProgress');
     const updateScrollProgress = () => {
       const height = document.documentElement.scrollHeight - window.innerHeight;
@@ -39,6 +43,7 @@ function App() {
     updateScrollProgress();
     window.addEventListener('scroll', updateScrollProgress, { passive: true });
 
+    // 3. Active Section Intersection Observer
     const sections = navItems
       .map((item) => document.getElementById(item.id))
       .filter(Boolean);
@@ -54,10 +59,11 @@ function App() {
 
     sections.forEach((section) => sectionObserver.observe(section));
 
+    // 4. Reveal Animation Observer
     const revealItems = document.querySelectorAll('[data-reveal]');
     const revealObserver = new IntersectionObserver(
       (entries) => {
-        entries.forEach((entry, index) => {
+        entries.forEach((entry) => {
           if (entry.isIntersecting) {
             const el = entry.target;
             const parentChildren = Array.from(el.parentElement ? el.parentElement.children : []);
@@ -73,6 +79,7 @@ function App() {
 
     revealItems.forEach((item) => revealObserver.observe(item));
 
+    // 5. Counters Observer
     const counters = document.querySelectorAll('[data-count]');
     const counterObserver = new IntersectionObserver(
       (entries) => {
@@ -99,6 +106,7 @@ function App() {
 
     counters.forEach((counter) => counterObserver.observe(counter));
 
+    // 6. Timeline Observer & Line Fill
     const timeline = document.querySelector('.timeline');
     const timelineFill = document.getElementById('timelineFill');
     const timelineSteps = document.querySelectorAll('.timeline__step');
@@ -122,6 +130,63 @@ function App() {
     window.addEventListener('scroll', updateTimeline, { passive: true });
     window.addEventListener('resize', updateTimeline);
 
+    // 7. Hero Particles Animation
+    const canvas = document.getElementById('particleCanvas');
+    let animId;
+    if (canvas) {
+      const ctx = canvas.getContext('2d');
+      const hero = canvas.closest('.hero');
+      if (ctx && hero) {
+        let particles = [];
+        let width, height;
+        const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+        const resize = () => {
+          width = canvas.width = hero.offsetWidth;
+          height = canvas.height = hero.offsetHeight;
+        };
+
+        const createParticles = () => {
+          const count = Math.min(70, Math.floor((width * height) / 18000));
+          particles = Array.from({ length: count }, () => ({
+            x: Math.random() * width,
+            y: Math.random() * height,
+            r: Math.random() * 1.6 + 0.4,
+            vy: Math.random() * 0.25 + 0.05,
+            vx: (Math.random() - 0.5) * 0.15,
+            alpha: Math.random() * 0.5 + 0.15
+          }));
+        };
+
+        const draw = () => {
+          ctx.clearRect(0, 0, width, height);
+          particles.forEach(p => {
+            p.y -= p.vy;
+            p.x += p.vx;
+            if (p.y < -10) { p.y = height + 10; p.x = Math.random() * width; }
+            if (p.x < -10) p.x = width + 10;
+            if (p.x > width + 10) p.x = -10;
+            ctx.beginPath();
+            ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+            ctx.fillStyle = `rgba(230,199,103,${p.alpha})`;
+            ctx.fill();
+          });
+          animId = requestAnimationFrame(draw);
+        };
+
+        resize();
+        createParticles();
+        if (!reducedMotion) {
+          draw();
+        }
+
+        window.addEventListener('resize', () => {
+          resize();
+          createParticles();
+        });
+      }
+    }
+
     return () => {
       window.removeEventListener('scroll', updateScrollProgress);
       window.removeEventListener('scroll', updateTimeline);
@@ -129,6 +194,7 @@ function App() {
       sectionObserver.disconnect();
       revealObserver.disconnect();
       counterObserver.disconnect();
+      if (animId) cancelAnimationFrame(animId);
     };
   }, []);
 
@@ -178,24 +244,8 @@ function App() {
   };
 
   const goToRegister = () => {
-    setCurrentView('register');
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    router.push('/register');
   };
-
-  const goToHome = () => {
-    setCurrentView('home');
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
-
-  if (currentView === 'register') {
-    return (
-      <>
-        <div className="scroll-progress" id="scrollProgress" />
-        <div className="cursor-glow" id="cursorGlow" aria-hidden="true" />
-        <RegisterPage onBack={goToHome} />
-      </>
-    );
-  }
 
   return (
     <>
@@ -203,12 +253,12 @@ function App() {
       <div className="cursor-glow" id="cursorGlow" aria-hidden="true" />
 
       <Header navItems={navItems} activeSection={activeSection} isScrolled={isScrolled} menuOpen={menuOpen} setMenuOpen={setMenuOpen} handleAnchorClick={handleAnchorClick} onNavigateToRegister={goToRegister} />
-      <HeroSection heroImage="https://images.unsplash.com/photo-1581091870627-3c9a4b1e0c1f?auto=format&fit=crop&w=1920&q=80" handleAnchorClick={handleAnchorClick} onNavigateToRegister={goToRegister} />
+      <HeroSection heroImage="https://fastly.picsum.photos/id/363/1920/1080.jpg?hmac=9RFCI5b36QX8aUP4in2LE3Y5bbodjn8Unzk02-BPPPc" handleAnchorClick={handleAnchorClick} onNavigateToRegister={goToRegister} />
       <AboutSection aboutCards={aboutCards} />
       <FeaturesSection featureCards={featureCards} />
-      <FacilitiesSection facilities={facilities} scrollCarousel={scrollCarousel} />
+      {/* <FacilitiesSection facilities={facilities} scrollCarousel={scrollCarousel} /> */}
       <WorkflowSection workflowSteps={workflowSteps} />
-      <GallerySection galleryItems={galleryItems} openLightbox={openLightbox} />
+      {/* <GallerySection galleryItems={galleryItems} openLightbox={openLightbox} /> */}
       {lightboxOpen && (
         <div className="lightbox is-open" aria-hidden="false">
           <button className="lightbox__close" aria-label="Close gallery image" onClick={() => setLightboxOpen(false)}><i className="fa-solid fa-xmark" /></button>
@@ -225,5 +275,3 @@ function App() {
     </>
   );
 }
-
-export default App;
