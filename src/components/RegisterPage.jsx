@@ -1,6 +1,6 @@
 function RegisterPage({ onBack }) {
-  const embedUrl = 'https://formfacade.com/embed/1FAIpQLSdy9bJNnb-LIXS83qInraWG0s8UXYo4uQl0R2hb0YG9ZKGQLw/';
-
+  // Using Tally.so embed URL with parameters for alignment, hidden title, and transparency
+  const embedUrl = 'https://tally.so/embed/PdQzG1?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1';
   return (
     <section className="register-page">
       <div className="section-inner register-page__inner">
@@ -20,7 +20,7 @@ function RegisterPage({ onBack }) {
           <h1>Register your innovation project</h1>
           <p className="register-page__lead">
             Share your idea, team details, and project goals with the AICTE IDEA Lab team.
-            Replace the placeholder embed URL below with your live FormFacade form when ready.
+            Replace the placeholder embed URL below with your live Tally form when ready.
           </p>
 
           <div className="register-page__embed">
@@ -29,6 +29,7 @@ function RegisterPage({ onBack }) {
               title="Project registration form"
               loading="lazy"
               referrerPolicy="strict-origin-when-cross-origin"
+              style={{ width: '100%', height: '720px', border: 'none' }}
             />
           </div>
 
@@ -42,3 +43,4 @@ function RegisterPage({ onBack }) {
 }
 
 export default RegisterPage;
+

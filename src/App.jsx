@@ -203,7 +203,7 @@ function App() {
       <div className="cursor-glow" id="cursorGlow" aria-hidden="true" />
 
       <Header navItems={navItems} activeSection={activeSection} isScrolled={isScrolled} menuOpen={menuOpen} setMenuOpen={setMenuOpen} handleAnchorClick={handleAnchorClick} onNavigateToRegister={goToRegister} />
-      <HeroSection heroImage={heroImg} handleAnchorClick={handleAnchorClick} onNavigateToRegister={goToRegister} />
+      <HeroSection heroImage="https://images.unsplash.com/photo-1581091870627-3c9a4b1e0c1f?auto=format&fit=crop&w=1920&q=80" handleAnchorClick={handleAnchorClick} onNavigateToRegister={goToRegister} />
       <AboutSection aboutCards={aboutCards} />
       <FeaturesSection featureCards={featureCards} />
       <FacilitiesSection facilities={facilities} scrollCarousel={scrollCarousel} />
@@ -221,7 +221,7 @@ function App() {
       <StatsSection stats={stats} />
       <WhyJoinSection whyJoinCards={whyJoinCards} />
       <ContactSection />
-      <Footer handleAnchorClick={handleAnchorClick} />
+      <Footer handleAnchorClick={handleAnchorClick} onNavigateToRegister={goToRegister} />
     </>
   );
 }

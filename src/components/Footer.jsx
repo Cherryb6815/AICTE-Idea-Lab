@@ -1,4 +1,4 @@
-function Footer({ handleAnchorClick }) {
+function Footer({ handleAnchorClick, onNavigateToRegister }) {
   return (
     <footer className="footer">
       <div className="section-inner footer__inner">
@@ -31,7 +31,15 @@ function Footer({ handleAnchorClick }) {
           <a href="#features" onClick={(event) => handleAnchorClick(event, '#features')}>Workshops</a>
           <a href="#workflow" onClick={(event) => handleAnchorClick(event, '#workflow')}>Innovation Workflow</a>
           <a href="#why-join" onClick={(event) => handleAnchorClick(event, '#why-join')}>Why Join</a>
-          <a href="https://forms.google.com/your-form" target="_blank" rel="noopener">Register a Project</a>
+          <a
+            href="/register"
+            onClick={(event) => {
+              event.preventDefault();
+              onNavigateToRegister?.();
+            }}
+          >
+            Register a Project
+          </a>
         </div>
 
         <div className="footer__credit">
